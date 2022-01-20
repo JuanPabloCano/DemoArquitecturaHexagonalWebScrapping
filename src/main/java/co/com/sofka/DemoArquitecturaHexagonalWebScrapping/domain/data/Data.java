@@ -1,7 +1,7 @@
 package co.com.sofka.DemoArquitecturaHexagonalWebScrapping.domain.data;
 
 import co.com.sofka.DemoArquitecturaHexagonalWebScrapping.domain.data.event.DataCreated;
-import co.com.sofka.DemoArquitecturaHexagonalWebScrapping.domain.data.event.DataGetted;
+import co.com.sofka.DemoArquitecturaHexagonalWebScrapping.domain.data.event.ArticleAdded;
 import co.com.sofka.DemoArquitecturaHexagonalWebScrapping.domain.generic.AggregateRoot;
 import co.com.sofka.DemoArquitecturaHexagonalWebScrapping.domain.generic.DomainEvent;
 
@@ -29,8 +29,8 @@ public class Data extends AggregateRoot {
         return data;
     }
 
-    public void getData(String dataId, String articleID, String title, String authorName){
-        appendChange(new DataGetted(dataId, articleID, title, authorName)).apply();
+    public void addArticle(String dataId, String articleID, String title, String authorName){
+        appendChange(new ArticleAdded(dataId, articleID, title, authorName)).apply();
     }
 
     public Article Article() {

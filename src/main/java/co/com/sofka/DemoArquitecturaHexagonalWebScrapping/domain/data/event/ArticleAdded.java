@@ -4,15 +4,15 @@ import co.com.sofka.DemoArquitecturaHexagonalWebScrapping.domain.generic.DomainE
 
 import java.util.Objects;
 
-public class DataGetted extends DomainEvent {
+public class ArticleAdded extends DomainEvent {
 
     private final String dataID;
     private final String articleID;
     private final String title;
     private final String authorName;
 
-    public DataGetted( String dataID, String articleID, String title, String authorName) {
-        super("sofka.data.datagetted");
+    public ArticleAdded(String dataID, String articleID, String title, String authorName) {
+        super("sofka.data.articleadded");
         this.dataID = Objects.requireNonNull(dataID);
         this.articleID = Objects.requireNonNull(articleID);
         this.title = Objects.requireNonNull(title);

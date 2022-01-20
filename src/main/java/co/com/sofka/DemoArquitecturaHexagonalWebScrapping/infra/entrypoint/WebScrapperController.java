@@ -1,6 +1,6 @@
 package co.com.sofka.DemoArquitecturaHexagonalWebScrapping.infra.entrypoint;
 
-import co.com.sofka.DemoArquitecturaHexagonalWebScrapping.domain.data.command.Getdata;
+import co.com.sofka.DemoArquitecturaHexagonalWebScrapping.domain.data.command.AddArticle;
 import io.vertx.core.eventbus.EventBus;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -19,8 +19,8 @@ public class WebScrapperController {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/data")
-    public Response executor(Getdata getdata) {
-        eventBus.publish(getdata.getType(), getdata);
+    public Response executor(AddArticle addArticle) {
+        eventBus.publish(addArticle.getType(), addArticle);
         return Response.ok().build();
     }
 }

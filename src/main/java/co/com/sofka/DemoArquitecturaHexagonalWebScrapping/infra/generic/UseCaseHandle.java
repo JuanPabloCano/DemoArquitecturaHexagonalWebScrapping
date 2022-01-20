@@ -19,12 +19,11 @@ public abstract class UseCaseHandle {
     @Autowired
     private BusService busService;
 
-    public void saveArticle(String dataId, List<DomainEvent> events) {
+    public void save(String dataId, List<DomainEvent> events) {
         events.stream().map(event -> {
             String eventBody = EventSerializer.instance().serialize(event);
             return new StoredEvent(event.getClass().getTypeName(), new Date(), eventBody);
         }).forEach(storedEvent -> repository.saveEvent("data", dataId, storedEvent));
-
         events.forEach(busService::send);
     }
 }

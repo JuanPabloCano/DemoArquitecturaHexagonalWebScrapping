@@ -2,7 +2,7 @@ package co.com.sofka.DemoArquitecturaHexagonalWebScrapping.infra.service;
 
 import co.com.sofka.DemoArquitecturaHexagonalWebScrapping.domain.data.Article;
 import co.com.sofka.DemoArquitecturaHexagonalWebScrapping.infra.repository.WebScrapperRepository;
-import co.com.sofka.DemoArquitecturaHexagonalWebScrapping.useCase.WebScrapperUseCase;
+import co.com.sofka.DemoArquitecturaHexagonalWebScrapping.useCase.AddArticleUseCase;
 import lombok.NoArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,7 +45,7 @@ public class WebScrapperService implements WebScrapperRepository {
         LOGGER.info("loadContents()...start");
         articles.clear();
         List<String> articleDetailsSearchTags = Arrays.asList(authorTagName, titleTagName);
-        WebScrapperUseCase scraperHelper = new WebScrapperUseCase(
+        AddArticleUseCase scraperHelper = new AddArticleUseCase(
                 newspaperUrl, parseTimeoutMillis, articleDetailsSearchTags, articleLinksSearchTags);
 
         LOGGER.info("Extracting article details...start");

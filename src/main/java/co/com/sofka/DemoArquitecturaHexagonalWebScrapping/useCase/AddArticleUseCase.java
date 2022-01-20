@@ -19,7 +19,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @AllArgsConstructor
-public class WebScrapperUseCase {
+public class AddArticleUseCase {
 
     private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
 
