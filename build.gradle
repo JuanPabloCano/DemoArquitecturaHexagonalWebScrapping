@@ -21,6 +21,11 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web:2.6.2'
 	implementation group: 'org.jsoup', name: 'jsoup', version: '1.14.3'
+    implementation 'io.vertx:vertx-core:4.2.2'
+    implementation 'javax.ws.rs:javax.ws.rs-api:2.1.1'
+    implementation 'com.google.code.gson:gson:2.8.9'
+	implementation group: 'io.quarkiverse.rabbitmqclient', name: 'quarkus-rabbitmq-client', version: '0.4.2.Final'
+	implementation group: 'io.quarkus', name: 'quarkus-vertx', version: '2.6.2.Final'
 	compileOnly 'org.projectlombok:lombok:1.18.22'
 	annotationProcessor 'org.projectlombok:lombok:1.18.22'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test:2.6.2'

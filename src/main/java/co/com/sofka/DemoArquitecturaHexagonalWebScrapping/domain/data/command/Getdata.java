@@ -11,4 +11,6 @@ public class Getdata extends Command {
 
     private final String dataID;
     private final String articleID;
+    private final String title;
+    private final String authorName;
 }

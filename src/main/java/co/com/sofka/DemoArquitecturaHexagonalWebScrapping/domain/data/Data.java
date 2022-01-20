@@ -29,8 +29,8 @@ public class Data extends AggregateRoot {
         return data;
     }
 
-    public void getData(String articleID, String title, String authorName){
-        appendChange(new DataGetted(articleID, title, authorName)).apply();
+    public void getData(String dataId, String articleID, String title, String authorName){
+        appendChange(new DataGetted(dataId, articleID, title, authorName)).apply();
     }
 
     public Article Article() {

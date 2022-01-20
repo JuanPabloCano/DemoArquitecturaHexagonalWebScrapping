@@ -1,31 +1,26 @@
 package co.com.sofka.DemoArquitecturaHexagonalWebScrapping.infra.entrypoint;
 
-import co.com.sofka.DemoArquitecturaHexagonalWebScrapping.domain.data.Article;
-import co.com.sofka.DemoArquitecturaHexagonalWebScrapping.infra.service.WebScrapperServiceImp;
+import co.com.sofka.DemoArquitecturaHexagonalWebScrapping.domain.data.command.Getdata;
+import io.vertx.core.eventbus.EventBus;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
-@RestController
-@RequestMapping("/articles")
+@Path("/articles")
 public class WebScrapperController {
 
     @Autowired
-    WebScrapperServiceImp webScrapperServiceImp;
+    EventBus eventBus;
 
-    @GetMapping(value = "/by-author/{authorName}", produces = "application/json")
-    public List<Article> searchArticlesByAuthor(@PathVariable("authorName") String authorName) {
-        return webScrapperServiceImp.searchArticlesByAuthor(authorName);
-    }
-
-    @GetMapping(value = "/authors", produces = "application/json")
-    public List<String> listAuthors() {
-        return webScrapperServiceImp.listAuthors();
-    }
-
-    @GetMapping(value = "/by-title/{title}", produces = "application/json")
-    public List<Article> searchArticleByTitle(@PathVariable("title") String title) {
-        return webScrapperServiceImp.searchArticleByTitle(title);
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/data")
+    public Response executor(Getdata getdata) {
+        eventBus.publish(getdata.getType(), getdata);
+        return Response.ok().build();
     }
 }

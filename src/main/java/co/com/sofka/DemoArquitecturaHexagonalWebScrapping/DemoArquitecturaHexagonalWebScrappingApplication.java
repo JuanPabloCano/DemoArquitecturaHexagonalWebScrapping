@@ -9,5 +9,4 @@ public class DemoArquitecturaHexagonalWebScrappingApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(DemoArquitecturaHexagonalWebScrappingApplication.class, args);
 	}
-
 }
